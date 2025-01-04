@@ -47,6 +47,17 @@ function HomePage() {
         return `?${sp.toString()}`
     }
 
+    function handleFilterChange(key, value) {
+        setSearchParams(prevParams => {
+            if (value === null) {
+                prevParams.delete(key)
+            } else {
+                prevParams.set(key, value)
+            }
+            return prevParams
+        })
+    }
+
     return (
         <main>
             <h2>Home</h2>
@@ -56,9 +67,9 @@ function HomePage() {
                 <Link to={genNewSearchParamString("type", null)}>Clear</Link>
             </div>
             <div>
-                <button onClick={() => setSearchParams({ type: "jedi" })}>Jedi</button>
-                <button onClick={() => setSearchParams({ type: "sith" })}>Sith</button>
-                <button onClick={() => setSearchParams({})}>Clear</button>
+                <button onClick={() => handleFilterChange("type", "jedi")}>Jedi</button>
+                <button onClick={() => handleFilterChange("type", "sith")}>Sith</button>
+                <button onClick={() => handleFilterChange("type", null)}>Clear</button>
             </div>
             <hr />
             {charEls}
