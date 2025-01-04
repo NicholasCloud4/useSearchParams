@@ -40,6 +40,12 @@ function HomePage() {
     return (
         <main>
             <h2>Home</h2>
+            <div>
+                <Link to="?type=jedi">Jedi</Link>
+                <Link to="?type=sith">Sith</Link>
+                <Link to=".">CLEAR</Link>
+            </div>
+            <hr />
             {charEls}
         </main>
     );
